@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getId } from 'redux/tasks/tasks-selector';
 import { addNewTask, makeId } from 'redux/tasks/tasks-slice';
+import { FormEl, LabelEl } from './TaskForm.styled';
 
 export default function TaskForm() {
   const [title, setTitle] = useState('');
@@ -17,13 +18,16 @@ export default function TaskForm() {
       setMassegeTitle(true);
       return;
     }
+    setMassegeTitle(false);
 
     if (descr === '') {
       setMassegeDescr(true);
       return;
     }
+    setMassegeDescr(false);
 
     dispatch(makeId(1));
+
     const objTask = {
       id: isId,
       title,
@@ -35,8 +39,8 @@ export default function TaskForm() {
   };
 
   return (
-    <form>
-      <label>
+    <FormEl>
+      <LabelEl>
         <span>Title:</span>
         <input
           type="text"
@@ -49,8 +53,8 @@ export default function TaskForm() {
           }}
         />
         {massegeTitle && <span>This field is empty</span>}
-      </label>
-      <label>
+      </LabelEl>
+      <LabelEl>
         <span>Description:</span>
         <input
           type="text"
@@ -63,10 +67,10 @@ export default function TaskForm() {
           }}
         />
         {massegeDescr && <span>This field is empty</span>}
-      </label>
+      </LabelEl>
       <button type="button" onClick={handleClick}>
         Create
       </button>
-    </form>
+    </FormEl>
   );
 }
