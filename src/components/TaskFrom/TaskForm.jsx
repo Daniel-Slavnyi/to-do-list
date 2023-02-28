@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addNewTask } from 'redux/tasks/tasks-slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getId } from 'redux/tasks/tasks-selector';
+import { addNewTask, makeId } from 'redux/tasks/tasks-slice';
 
 export default function TaskForm() {
   const [title, setTitle] = useState('');
@@ -9,6 +10,7 @@ export default function TaskForm() {
   const [massegeDescr, setMassegeDescr] = useState(false);
 
   const dispatch = useDispatch();
+  const isId = useSelector(getId);
 
   const handleClick = () => {
     if (title === '') {
@@ -21,10 +23,12 @@ export default function TaskForm() {
       return;
     }
 
+    dispatch(makeId(1));
     const objTask = {
-      id: 1,
+      id: isId,
       title,
       description: descr,
+      isDone: false,
     };
 
     dispatch(addNewTask(objTask));
