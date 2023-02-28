@@ -5,7 +5,7 @@ import { persistReducer } from 'redux-persist';
 
 const persistConfig = {
   key: 'tasks',
-  whitelist: ['items'],
+  whitelist: ['items', 'id'],
   storage,
 };
 
