@@ -1,8 +1,10 @@
-import { Modal } from 'components/Modal/Modal';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
+import { Modal } from 'components/Modal/Modal';
 import { setDoneTask } from 'redux/tasks/tasks-slice';
-import { LiEl, ParEl } from './TaskItem.styled';
+
+import { BtnEl, LiEl, ParEl } from './TaskItem.styled';
 
 export default function TaskItem({ item }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -27,14 +29,14 @@ export default function TaskItem({ item }) {
         checked={item.isDone}
         onChange={handleChange}
       />
-      <button
+      <BtnEl
         type="button"
         onClick={() => {
           setIsOpenModal(true);
         }}
       >
         Open
-      </button>
+      </BtnEl>
       {isOpenModal && (
         <Modal
           tusk={item}

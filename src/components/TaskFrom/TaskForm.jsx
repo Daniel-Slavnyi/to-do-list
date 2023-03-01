@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getId } from 'redux/tasks/tasks-selector';
 import { addNewTask, makeId } from 'redux/tasks/tasks-slice';
-import { FormEl, LabelEl, SpanEl } from './TaskForm.styled';
+import { BtnEl, FormEl, LabelEl, SpanEl } from './TaskForm.styled';
 
 export default function TaskForm() {
   const [title, setTitle] = useState('');
@@ -45,6 +46,7 @@ export default function TaskForm() {
       <LabelEl>
         <span>Title:</span>
         <input
+          style={{ borderColor: massegeTitle ? 'red' : 'black' }}
           type="text"
           name="title"
           required
@@ -59,6 +61,7 @@ export default function TaskForm() {
       <LabelEl>
         <span>Description:</span>
         <input
+          style={{ borderColor: massegeDescr ? 'red' : 'black' }}
           type="text"
           name="description"
           required
@@ -70,9 +73,9 @@ export default function TaskForm() {
         />
         {massegeDescr && <SpanEl>This field is empty</SpanEl>}
       </LabelEl>
-      <button type="button" onClick={handleClick}>
+      <BtnEl type="button" onClick={handleClick}>
         Create
-      </button>
+      </BtnEl>
     </FormEl>
   );
 }

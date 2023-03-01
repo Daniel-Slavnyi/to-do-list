@@ -23,5 +23,5 @@ export const ModalWrapper = styled.div`
   width: 260px;
   background-color: #ffffff;
   border-radius: 25px;
-  border: 1px solid #24cca7;
+  border: 1px solid blue;
 `;
