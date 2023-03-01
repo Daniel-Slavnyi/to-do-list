@@ -10,3 +10,7 @@ export const LabelEl = styled.label`
   flex-direction: column;
   gap: 10px;
 `;
+
+export const SpanEl = styled.span`
+  color: red;
+`;

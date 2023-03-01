@@ -33,18 +33,21 @@ export const Modal = ({
   return (
     <Backdrop>
       <ModalWrapper>
-        <h1>{infoOfTask.title}</h1>
+        <p>{infoOfTask.title}</p>
         <p>Description:</p>
         <p>{infoOfTask.description}</p>
+        <div>
+          <span>Status:</span>
+          <input
+            type="checkbox"
+            name={infoOfTask.id}
+            checked={tusk.isDone}
+            onChange={handleChange}
+          />
+        </div>
         <button type="button" onClick={closeModalByClick}>
           Close Modal
         </button>
-        <input
-          type="checkbox"
-          name={infoOfTask.id}
-          checked={tusk.isDone}
-          onChange={handleChange}
-        />
       </ModalWrapper>
     </Backdrop>
   );

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getId } from 'redux/tasks/tasks-selector';
 import { addNewTask, makeId } from 'redux/tasks/tasks-slice';
-import { FormEl, LabelEl } from './TaskForm.styled';
+import { FormEl, LabelEl, SpanEl } from './TaskForm.styled';
 
 export default function TaskForm() {
   const [title, setTitle] = useState('');
@@ -36,6 +36,8 @@ export default function TaskForm() {
     };
 
     dispatch(addNewTask(objTask));
+    setTitle('');
+    setDescr('');
   };
 
   return (
@@ -52,7 +54,7 @@ export default function TaskForm() {
             setTitle(e.target.value);
           }}
         />
-        {massegeTitle && <span>This field is empty</span>}
+        {massegeTitle && <SpanEl>This field is empty</SpanEl>}
       </LabelEl>
       <LabelEl>
         <span>Description:</span>
@@ -66,7 +68,7 @@ export default function TaskForm() {
             setDescr(e.target.value);
           }}
         />
-        {massegeDescr && <span>This field is empty</span>}
+        {massegeDescr && <SpanEl>This field is empty</SpanEl>}
       </LabelEl>
       <button type="button" onClick={handleClick}>
         Create

@@ -2,6 +2,7 @@ import { Modal } from 'components/Modal/Modal';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setDoneTask } from 'redux/tasks/tasks-slice';
+import { LiEl, ParEl } from './TaskItem.styled';
 
 export default function TaskItem({ item }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -16,10 +17,10 @@ export default function TaskItem({ item }) {
     setIsOpenModal(item => !item);
   };
   return (
-    <li>
-      <p>{item.id}</p>
-      <p>{item.title}</p>
-      <p>{item.description}</p>
+    <LiEl>
+      <ParEl>{item.id}</ParEl>
+      <ParEl>{item.title}</ParEl>
+      <ParEl>{item.description}</ParEl>
       <input
         type="checkbox"
         name={item.id}
@@ -42,6 +43,6 @@ export default function TaskItem({ item }) {
           handleChange={handleChange}
         />
       )}
-    </li>
+    </LiEl>
   );
 }
